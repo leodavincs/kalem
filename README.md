@@ -20,6 +20,40 @@ Sen yalnızca ne istediğini anlatırsın. Hangi sahnenin hangi kalemle çizilec
 
 ![Uçan makine örneği: altı sahne, altı motor](ornek/ucan-makine/kontrol.png)
 
+## Yeni: referans skill'i
+
+Beğendiğin bir videoyu sahnelere böler, her sahne için ayrı bir video istemi (prompt) yazar. Kamera nereden bakıyor, ışık nereden geliyor, sahnede ne hareket ediyor, kaç saniye sürüyor. Videoyu **üretmez**: istemleri çıkarır, üretimi kendi video aracında sen yaparsın. Ek anahtar ya da hesap gerekmez, kareleri Claude görür.
+
+**Kurulum:** Kalem'in kurulumu yeter (aşağıda). Skill `.claude/skills/referans/` altında hazırdır; yalnız ffmpeg gerekir.
+
+**Kullanım:** repo klasöründe Claude Code'u aç, bir video ver:
+
+```
+claude
+/referans ~/Desktop/videom.mp4
+```
+
+Arka planda sırayla şunlar olur: ffmpeg kesim anlarını bulur ve her sahneden üç kare çıkarır (`motorlar/referans/sahne_bul.py`), Claude kareleri görüp her sahne için İngilizce istem yazar, sonra `motorlar/referans/html_yap.py` sayfayı kurar.
+
+**Çıktı** (`projeler/referans-<video adı>/`):
+
+- `istemler.html`: her sahne için üç kare, Türkçe kısa açıklama (kamera, ışık, konu, doku/renk, geçiş), İngilizce istem ve **Kopyala** düğmesi. Bir de "Hepsini kopyala".
+- `istemler.md`: aynısı düz metin.
+
+Örnek: Méliès'in *Ay'a Seyahat* filminin (1902, kamu malı) 75 saniyelik kesiti 13 sahneye bölündü. Sonuç [`ornek/referans-melies/`](ornek/referans-melies/istemler.md) içinde; `istemler.html`'i tarayıcıda aç.
+
+Bir sahnenin istemi şöyle görünür:
+
+> A static, locked-off wide shot of a theatrical stage: a giant painted cannon on a wooden scaffold at left, a sailor in a white cap on its platform, a uniformed officer saluting at right before a painted moonlit landscape. A blurred troupe of dancing women sweeps in from the left. Eye-level proscenium camera, no movement, 2.5 seconds. Flat even stage lighting, high-contrast black and white, heavy film grain.
+
+**Sınırlar**
+
+- **Telif:** Başkasının videosunu birebir kopyalayıp ticari kullanma. İstemler referans içindir: stili, kamerayı, ışığı öğren, kendi işini yap. Kendi videon ya da kamu malı/izinli videolarla başla.
+- Claude videoyu izlemez, her sahnenin üç karesini görür. Ses, konuşma ve çok hızlı hareket istemlere girmez.
+- Yumuşak geçişleri (çapraz geçiş) kesim bulucu kaçırabilir. Sahne sayısı tutmuyorsa `--esik` ile oynat (düşük sayı, daha çok sahne).
+- Her sahne en çok 8 saniyeye bölünür (çoğu video modeli bu kadar üretir).
+- Video bağlantısından indirme skill'in işi değil. Videoyu kendin indir ya da ekran kaydı al.
+
 ## Hangi sahne, hangi motor
 
 | Sahnenin içinde... | Motor |

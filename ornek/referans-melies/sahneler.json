@@ -1,0 +1,149 @@
+{
+  "video": "melies-kesit.mp4",
+  "toplam_sure": 75.0,
+  "sahneler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.47,
+      "sure": 2.5,
+      "kareler": [
+        "kareler/s01-a.jpg",
+        "kareler/s01-b.jpg",
+        "kareler/s01-c.jpg"
+      ]
+    },
+    {
+      "no": 2,
+      "baslangic": 2.47,
+      "bitis": 4.97,
+      "sure": 2.5,
+      "kareler": [
+        "kareler/s02-a.jpg",
+        "kareler/s02-b.jpg",
+        "kareler/s02-c.jpg"
+      ]
+    },
+    {
+      "no": 3,
+      "baslangic": 4.97,
+      "bitis": 10.37,
+      "sure": 5.4,
+      "kareler": [
+        "kareler/s03-a.jpg",
+        "kareler/s03-b.jpg",
+        "kareler/s03-c.jpg"
+      ]
+    },
+    {
+      "no": 4,
+      "baslangic": 10.37,
+      "bitis": 15.77,
+      "sure": 5.4,
+      "kareler": [
+        "kareler/s04-a.jpg",
+        "kareler/s04-b.jpg",
+        "kareler/s04-c.jpg"
+      ]
+    },
+    {
+      "no": 5,
+      "baslangic": 15.77,
+      "bitis": 19.33,
+      "sure": 3.6,
+      "kareler": [
+        "kareler/s05-a.jpg",
+        "kareler/s05-b.jpg",
+        "kareler/s05-c.jpg"
+      ]
+    },
+    {
+      "no": 6,
+      "baslangic": 19.33,
+      "bitis": 26.94,
+      "sure": 7.6,
+      "kareler": [
+        "kareler/s06-a.jpg",
+        "kareler/s06-b.jpg",
+        "kareler/s06-c.jpg"
+      ]
+    },
+    {
+      "no": 7,
+      "baslangic": 26.94,
+      "bitis": 34.56,
+      "sure": 7.6,
+      "kareler": [
+        "kareler/s07-a.jpg",
+        "kareler/s07-b.jpg",
+        "kareler/s07-c.jpg"
+      ]
+    },
+    {
+      "no": 8,
+      "baslangic": 34.56,
+      "bitis": 42.17,
+      "sure": 7.6,
+      "kareler": [
+        "kareler/s08-a.jpg",
+        "kareler/s08-b.jpg",
+        "kareler/s08-c.jpg"
+      ]
+    },
+    {
+      "no": 9,
+      "baslangic": 42.17,
+      "bitis": 47.63,
+      "sure": 5.5,
+      "kareler": [
+        "kareler/s09-a.jpg",
+        "kareler/s09-b.jpg",
+        "kareler/s09-c.jpg"
+      ]
+    },
+    {
+      "no": 10,
+      "baslangic": 47.63,
+      "bitis": 54.47,
+      "sure": 6.8,
+      "kareler": [
+        "kareler/s10-a.jpg",
+        "kareler/s10-b.jpg",
+        "kareler/s10-c.jpg"
+      ]
+    },
+    {
+      "no": 11,
+      "baslangic": 54.47,
+      "bitis": 61.32,
+      "sure": 6.9,
+      "kareler": [
+        "kareler/s11-a.jpg",
+        "kareler/s11-b.jpg",
+        "kareler/s11-c.jpg"
+      ]
+    },
+    {
+      "no": 12,
+      "baslangic": 61.32,
+      "bitis": 68.16,
+      "sure": 6.8,
+      "kareler": [
+        "kareler/s12-a.jpg",
+        "kareler/s12-b.jpg",
+        "kareler/s12-c.jpg"
+      ]
+    },
+    {
+      "no": 13,
+      "baslangic": 68.16,
+      "bitis": 75.0,
+      "sure": 6.8,
+      "kareler": [
+        "kareler/s13-a.jpg",
+        "kareler/s13-b.jpg",
+        "kareler/s13-c.jpg"
+      ]
+    }
+  ]
+}

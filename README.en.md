@@ -20,6 +20,17 @@ You describe what you want. The skill decides which pen draws which scene.
 
 ![Flying machine example: six scenes, six engines](ornek/ucan-makine/kontrol.png)
 
+## New: the referans skill
+
+Give it a video you like. It splits it into scenes and writes a separate video prompt for each one: camera angle and movement, light, what moves, how long it lasts. It does **not** generate video; you do that in your own video tool. No API key needed, Claude looks at the frames itself (ffmpeg required).
+
+```
+claude
+/referans ~/Desktop/myvideo.mp4
+```
+
+Output in `projeler/referans-<name>/`: `istemler.html` (three frames per scene, short Turkish notes, English prompt, copy button) and `istemler.md`. Example from Méliès' *A Trip to the Moon* (1902, public domain): [`ornek/referans-melies/`](ornek/referans-melies/istemler.md). Limits: use it for reference, do not copy other people's videos; Claude sees three frames per scene, not sound or fast motion.
+
 ## Which scene, which engine
 
 | Inside the scene... | Engine |
