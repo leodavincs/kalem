@@ -9,7 +9,12 @@ KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHROME = os.environ.get("CHROME", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 sayfa, cikis = sys.argv[1], os.path.abspath(sys.argv[2])
 W, H = (int(sys.argv[3]), int(sys.argv[4])) if len(sys.argv) > 4 else (1920, 1080)
-shutil.rmtree(cikis, ignore_errors=True); os.makedirs(cikis)
+import re
+if os.path.isdir(cikis):   # yalnız daha önce bu betiğin yazdığı kare klasörü silinir; başka dosya varsa dokunma
+    yabanci = [f for f in os.listdir(cikis) if not re.fullmatch(r"\d{4}\.png", f)]
+    if yabanci: sys.exit(f"{cikis} içinde kare dışı dosyalar var ({', '.join(yabanci[:3])}...). Boş ya da yeni bir klasör ver.")
+    shutil.rmtree(cikis)
+os.makedirs(cikis)
 import time
 bitti = threading.Event(); durum = {"hata": None, "son": time.time(), "kare": 0}
 class I(http.server.SimpleHTTPRequestHandler):

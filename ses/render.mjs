@@ -2,7 +2,8 @@
 import http from "http"; import fs from "fs"; import path from "path"; import puppeteer from "puppeteer-core";
 const KOK = path.resolve(import.meta.dirname, "..");
 const mime = { ".json": "application/json", ".html": "text/html", ".js": "text/javascript", ".mjs": "text/javascript" };
-const srv = http.createServer((q, r) => { const p = path.join(KOK, decodeURIComponent(q.url.split("?")[0])); fs.readFile(p, (e, d) => { if (e) { r.writeHead(404); r.end(); } else { r.writeHead(200, { "content-type": mime[path.extname(p)] || "application/octet-stream" }); r.end(d); } }); }).listen(0);
+const srv = http.createServer((q, r) => { const p = path.resolve(KOK, "." + decodeURIComponent(q.url.split("?")[0])); if (!p.startsWith(KOK + path.sep)) { r.writeHead(404); r.end(); return; } fs.readFile(p, (e, d) => { if (e) { r.writeHead(404); r.end(); } else { r.writeHead(200, { "content-type": mime[path.extname(p)] || "application/octet-stream" }); r.end(d); } }); }).listen(0, "127.0.0.1");   // yalnız bu bilgisayar; ağdaki başkası bağlanamaz
+await new Promise((ok) => (srv.listening ? ok() : srv.once("listening", ok)));   // adres verilince dinleme gecikmeli başlar
 const port = srv.address().port;
 const br = await puppeteer.launch({ executablePath: process.env.CHROME || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", headless: "new", args: ["--autoplay-policy=no-user-gesture-required"] });
 try {

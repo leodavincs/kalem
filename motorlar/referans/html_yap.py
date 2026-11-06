@@ -53,15 +53,16 @@ def main():
     kartlar = []
     for s in ist["sahneler"]:
         b, t = zaman.get(s["no"], (0, 0))
-        imgs = "".join(f'<img src="{e(k)}" alt="sahne {s["no"]} karesi">' for k in kareler.get(s["no"], []))
+        no, sure = int(s["no"]), float(s["sure"])   # sayı değilse burada hata verir; HTML'e ham metin girmez
+        imgs = "".join(f'<img src="{e(k)}" alt="sahne {no} karesi">' for k in kareler.get(s["no"], []))
         satirlar = "".join(f"<tr><th>{ad}</th><td>{e(s[k])}</td></tr>" for k, ad in ALANLAR if s.get(k))
         kartlar.append(f"""<section class="kart">
-<header><h2>Sahne {s['no']}</h2><span class="sure">{s['sure']} sn &middot; {b:.0f}-{t:.0f}. sn</span></header>
+<header><h2>Sahne {no}</h2><span class="sure">{sure:g} sn &middot; {b:.0f}-{t:.0f}. sn</span></header>
 <div class="kareler">{imgs}</div>
 <p class="acik">{e(s.get('aciklama', ''))}</p>
 <table>{satirlar}</table>
-<pre id="i{s['no']}">{e(s['istem'])}</pre>
-<button onclick="kopyala({s['no']}, this)">Kopyala</button>
+<pre id="i{no}">{e(s['istem'])}</pre>
+<button onclick="kopyala({no}, this)">Kopyala</button>
 </section>""")
     tum = "\n\n".join(s["istem"] for s in ist["sahneler"])
     sayfa = f"""<!doctype html>
@@ -89,7 +90,7 @@ button.hepsi{{background:var(--yazi);color:var(--zemin);margin-bottom:16px}}
 <button class="hepsi" onclick="kopyala(0, this)">Hepsini kopyala</button>
 {chr(10).join(kartlar)}
 <p class="ozet">Bu istemler ilham içindir. Başkasının videosunu birebir kopyalama; referans al, kendi işini yap.</p>
-<script type="text/plain" id="hepsi">{e(tum)}</script>
+<pre id="hepsi" hidden>{e(tum)}</pre>
 <script>
 function kopyala(n, d){{
   var m = n===0 ? document.getElementById('hepsi').textContent : document.getElementById('i'+n).textContent;
